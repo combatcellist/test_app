@@ -1,6 +1,6 @@
 <div class="content-wrapper">
  <div class="content-block">
- <% (1..10).each do |i| %>
+ <% @posts.each do |post| %>
  <div class="content">
     <div class="user-about">
        <div class="image">
@@ -23,9 +23,16 @@
         </div>
 
         <div class="text">
-            <p>これはサンプルテキストですこれはサンプルテキストですこれはサンプルテキストですこれはサンプルテキストです</p>
-            <p>これはサンプルテキストですこれはサンプルテキストですこれはサンプルテキストですこれはサンプルテキストです</p>
+            <p><%= post.content %></p>
         </div>
+
+        <% if post.images.attached? %>
+          <div class="images">
+            <% post.images.each do |image| %>
+              <%= image_tag image %> <br>
+            <% end %>   
+          </div>
+        <% end %>
 
         <div class="action-menu">
           <div class="like">
@@ -35,7 +42,6 @@
           
           </div>
         </div>
-
       </div>
  <% end %>
   
